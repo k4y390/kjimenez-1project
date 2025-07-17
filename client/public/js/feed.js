@@ -17,12 +17,34 @@ window.onload = function() {
     })
   }
 };
-let feedItem = {title: 'Marist Story 1', body: 'TBD', linkUrl: 'TBD', imageUrl:};
+
+let feedItem = {title: 'Andromeda Galaxy', body: 'This is an article about the Andromeda Galaxy made by me. It is a segment of my website, the Galaxy Zone.', linkUrl: 'file:///C:/Users/kj5497/Downloads/School%20Version%20of%20Andromeda%20Galaxy.pdf', imageUrl:"images/campus.png"};
+let feedItem2 = {title: 'Triangulum Galaxy', body: 'This is an article about the Triangulum Galaxy made by me. It is a segment of my website, the Galaxy Zone.', linkUrl: 'https://necsd-my.sharepoint.com/:w:/g/personal/kj5497_students_necsd_net/EciGFqt2QcZMp5wABbhUyBIBrDe2JACJU_XyaHFCpntp8Q?e=AsTvaL', imageUrl:"images/news_pic.jpg"};
+let feedItem3 = {title: 'Comet Galaxy', body: 'This is an article about the Comet Galaxy made by me. It is a segment of my website, the Galaxy Zone.', linkUrl: 'file:///C:/Users/kj5497/Downloads/School%20Version%20of%20Comet%20Galaxy%20(1).pdf', imageUrl:"images/news_pic.jpg"};
 
 window.addEventListener ('load', () => {
-  let storyOne = document.getElementById("storyOne");
-  storyOne.innerHTML = feedItem.imageUrl + "<br />";
-  storyOne.innerHTML += feedItem.title + "<br />";
-  storyOne.innerHTML += feedItem.body + "<br />";
-  storyOne.innerHTML += feedItem.linkUrl + "<br />";
+ let currentStories = [feedItem, feedItem2, feedItem3];
+ function displayItem(feedItem) {
+  const newsfeed = document.getElementById("newsfeed");
+}
+console.log(newsfeed);
+for (i=0; i<currentStories.length; i++) {
+  newsfeed.innerHTML += "<h1>"+ currentStories[i].title + "</h1>";
+  newsfeed.innerHTML += currentStories[i].body + "<br />";
+  newsfeed.innerHTML += currentStories[i].linkUrl + "<br />";
+  newsfeed.innerHTML += currentStories[i].imageUrl;
+} 
+
+  fetch("/api/allFeedItems").then((res) => {
+      res.json().then((data) => {
+          console.log(data);
+          for (i=0; i<currentStories.length; i++) {
+               newsfeed.innerHTML += "<h3>"+ currentStories[i].title + "</h3>";
+               newsfeed.innerHTML += currentStories[i].body + "<br />";
+               newsfeed.innerHTML += currentStories[i].linkUrl + "<br />";
+               newsfeed.innerHTML += currentStories[i].imageUrl;
+          } 
+      });
+  });
+  console.log("depression");
 });

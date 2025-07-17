@@ -59,8 +59,16 @@ a {
 }
 
 #maristcampus {
-	position: relative;
-	float: left;
-	height: 50px;
-	bottom: 5px;
+	max-width: 150px;
+	max-height: 150px;
+}
+
+#newspaper {
+	max-width: 150px;
+	max-height: 150px;
+}
+
+#hancock_center {
+	max-width: 150px;
+	max-height: 150px;
 }
